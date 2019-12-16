@@ -1,0 +1,77 @@
+#tweaks
+#https://easylinuxtipsproject.blogspot.com/p/clean-mint.html
+#https://easylinuxtipsproject.blogspot.com/p/speed-mint.html
+
+#rm ~/.bashrc
+#touch ~/.bashrc
+#echo alias la='ls -A' >>~/.bashrc
+
+#systemd cleanup
+sudo journalctl --vacuum-size=50M
+sudo sed -i 's/#SystemMaxFiles=100/SystemMaxFiles=5/g' /etc/systemd/journald.conf
+sudo sed -i 's/#SystemMaxFileSize=/SystemMaxFileSize=1G/g' /etc/systemd/journald.conf
+sudo sed -i 's/#Storage=auto/Storage=none/g' /etc/systemd/journald.conf
+
+#logging cleanup
+sudo sed -i 's/rotate 7/rotate 1/g' /etc/logrotate.d/rsyslog
+sudo sed -i 's/rotate 4/rotate 1/g' /etc/logrotate.d/rsyslog
+sudo sed -i 's/weekly/daily/g' /etc/logrotate.d/rsyslog
+sudo sed -i 's/rotate 4/rotate 1/g' /etc/logrotate.conf
+sudo sed -i 's/weekly/daily/g' /etc/logrotate.conf
+
+
+#install
+sudo apt-get install g++
+sudo apt-get install build-essential
+
+sudo add-apt-repository ppa:eugenesan/ppa
+sudo apt-get update
+sudo apt-get install keepassx
+
+wget -qO - https://downloads.iridiumbrowser.de/ubuntu/iridium-release-sign-01.pub|sudo apt-key add -
+cat <<EOF | sudo tee /etc/apt/sources.list.d/iridium-browser.list
+deb [arch=amd64] https://downloads.iridiumbrowser.de/deb/ stable main
+#deb-src https://downloads.iridiumbrowser.de/deb/ stable main
+EOF
+sudo apt-get update
+sudo apt-get install iridium-browser
+
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+
+sudo add-apt-repository ppa:kelleyk/emacs
+sudo apt update
+sudo apt install emacs26
+cp init.el ~/.emacs.d/init.el
+
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
+sudo apt update
+sudo apt install r-base
+wget https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.2.1578-amd64.deb
+sudo dpkg -i rstudio-1.2.1578-amd64.deb
+
+sudo apt-get install unbound
+
+#remove
+sudo apt-get purge hexchat firefox thunderbird seahorse
+rm -f ~/.mozilla/firefox/
+rm -f ~/.macromedia/ 
+rm -f ~/.adobe
+sudo rm -f /etc/firefox/
+sudo rm -f /usr/lib/firefox/
+sudo apt-get autoremove
+
+sudo systemctl disable bluetooth.service
+sudo systemctl disable bluetooth --now
+
+sudo ufw logging off
+
+sudo apt-get remove "fonts-kacst*" "fonts-khmeros*" fonts-lklug-sinhala fonts-guru-extra "fonts-nanum*" fonts-noto-cjk "fonts-takao*" fonts-tibetan-machine fonts-lao fonts-sil-padauk fonts-sil-abyssinica "fonts-tlwg-*" "fonts-lohit-*" fonts-beng-extra fonts-gargi fonts-gubbi fonts-gujr-extra fonts-kalapi "fonts-samyak*" fonts-navilu fonts-nakula fonts-orya-extra fonts-pagul fonts-sarai "fonts-telu*" "fonts-wqy*" "fonts-smc*" fonts-deva-extra fonts-sahadeva
+sudo dpkg-reconfigure fontconfig
+
+# cleanup
+
+sudo apt-get --fix-broken install
+sudo apt update
+sudo apt upgrade
