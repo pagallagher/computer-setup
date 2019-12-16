@@ -67,8 +67,11 @@ sudo apt-get install unbound
 
 ## Remove Preinstalled Software
 
-I would read through this section carefully. If you happen to want anything in here, remove it before running.
+This section is very dependant on the Linux flavor chosen. I would read through this section carefully. If you happen to want anything in here, remove it before running. If there are additional things that you want to dispose of, add them.
+
 I also disable bluetooth here to help battery life. If you actually use bluetooth, skip that section.
+
+I also remove a lot of the language specific character fonts that I don't speak.
 ```bash
 # Unused Programs
 sudo apt-get purge hexchat firefox thunderbird seahorse
