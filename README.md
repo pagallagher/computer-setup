@@ -6,7 +6,7 @@ A handful of things in here will be somewhat specific to Linux Mint. I will flag
 
 ## Tweaks
 
-The goal here is to limit the amout of logging that goes on because by default it's a bit excessive.
+The goal here is to limit the amout of logging that goes on because by default it's a bit excessive. I know systemd can be a controversial topic in some circles. If you don't have a systemd system, skip to the logging section.
 ```
 #systemd cleanup
 sudo journalctl --vacuum-size=50M
@@ -25,7 +25,11 @@ sudo sed -i 's/weekly/daily/g' /etc/logrotate.conf
 
 ## Install Necessary Software
 
-Pick and choose as desired. Note, I also have an emacs for python config file that may or may not be of interest.
+Pick and choose as desired. 
+
+I know web browsers are largely taste and preference driven. My favorite web browser is in  here, but there are other frankly exellent options. If you love the firefox style, GNU icecat is great. If Chrome is more your style, Iridium and  Ungoogled-Chrome are good. There a handful of other less right answers, but the only wrong answer is Google Chrome.
+
+Note, I also have an emacs for python config file that may or may not be of interest.
 ```bash
 # Compilers
 sudo apt-get install g++
