@@ -27,7 +27,7 @@ sudo sed -i 's/weekly/daily/g' /etc/logrotate.conf
 
 Pick and choose as desired. 
 
-I know web browsers are largely taste and preference driven. My favorite web browser is in  here, but there are other frankly exellent options. If you love the firefox style, GNU icecat is great. If Chrome is more your style, Iridium and  Ungoogled-Chrome are good. There a handful of other less right answers, but the only wrong answer is Google Chrome.
+I know web browsers are largely taste and preference driven. My favorite web browser is in  here, but there are other frankly exellent options. If you love the firefox style, GNU Icecat is great. If Chrome is more your style, Iridium and  Ungoogled-Chrome are good. There a handful of other less right answers, but the only wrong answer is Google Chrome.
 
 Note, I also have an emacs for python config file that may or may not be of interest.
 ```bash
@@ -66,6 +66,14 @@ sudo apt update
 sudo apt install r-base
 wget https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.2.1578-amd64.deb
 sudo dpkg -i rstudio-1.2.1578-amd64.deb
+
+# Kodi
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:team-xbmc/ppa
+sudo apt-get update
+sudo apt-get install kodi
+
+# Unbound
 sudo apt-get install unbound
 ```
 
@@ -79,11 +87,11 @@ I also remove a lot of the language specific character fonts that I don't speak.
 ```bash
 # Unused Programs
 sudo apt-get purge hexchat firefox thunderbird seahorse
-rm -f ~/.mozilla/firefox/
-rm -f ~/.macromedia/ 
-rm -f ~/.adobe
-sudo rm -f /etc/firefox/
-sudo rm -f /usr/lib/firefox/
+rm -r -f ~/.mozilla/firefox/
+rm -r -f ~/.macromedia/ 
+rm -r -f ~/.adobe
+sudo rm -r -f /etc/firefox/
+sudo rm -r -f /usr/lib/firefox/
 sudo apt-get autoremove
 
 # Disable bluetooth
