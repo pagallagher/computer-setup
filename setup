@@ -53,15 +53,20 @@ sudo apt install r-base
 wget https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.2.1578-amd64.deb
 sudo dpkg -i rstudio-1.2.1578-amd64.deb
 
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:team-xbmc/ppa
+sudo apt-get update
+sudo apt-get install kodi
+
 sudo apt-get install unbound
 
 #remove
 sudo apt-get purge hexchat firefox thunderbird seahorse
-rm -f ~/.mozilla/firefox/
-rm -f ~/.macromedia/ 
-rm -f ~/.adobe
-sudo rm -f /etc/firefox/
-sudo rm -f /usr/lib/firefox/
+rm -r -f ~/.mozilla/firefox/
+rm -r -f ~/.macromedia/ 
+rm -r -f ~/.adobe
+sudo rm -r -f /etc/firefox/
+sudo rm -r -f /usr/lib/firefox/
 sudo apt-get autoremove
 
 sudo systemctl disable bluetooth.service
