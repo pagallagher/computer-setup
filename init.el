@@ -52,8 +52,8 @@
 ;; Enable elpy
 (elpy-enable)
 
-(setq python-shell-interpreter "ipython"
-      python-shell-interpreter-args "console -i --simple-prompt"
+(setq python-shell-interpreter "python3"
+      ;;python-shell-interpreter-args "console -i --simple-prompt"
       python-shell-prompt-detect-failure-warning nil)
 
 ;; Enable Flycheck
